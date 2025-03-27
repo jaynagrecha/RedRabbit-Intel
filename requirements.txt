@@ -1,0 +1,11 @@
+Flask
+Flask-RESTful
+Flask-JWT-Extended
+Flask-SQLAlchemy
+psycopg2-binary
+gunicorn
+requests
+celery
+redis
+python-dotenv
+stix2
