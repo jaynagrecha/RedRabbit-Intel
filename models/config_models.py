@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from app import db
 
 class APIKey(db.Model):
     id = db.Column(db.Integer, primary_key=True)
