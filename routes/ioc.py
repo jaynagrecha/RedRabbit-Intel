@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from models.config_models import IOC
+from models.config_models import IOC, db
 
 
 ioc_bp = Blueprint('ioc_bp', __name__)
@@ -16,6 +16,6 @@ def seed_iocs():
         IOC(indicator="malicious.com", type="domain", source="ThreatFeedX"),
         IOC(indicator="badactor.net", type="domain", source="Analyst Note")
     ]
-   # db.session.bulk_save_objects(sample_data)
-   # db.session.commit()
+    db.session.bulk_save_objects(sample_data)
+    db.session.commit()
     return jsonify({"message": "Sample IOCs seeded."})
