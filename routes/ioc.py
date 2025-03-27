@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
-from models import IOC, db
+from models.config_models import IOC, db
+
 
 ioc_bp = Blueprint('ioc_bp', __name__)
 
@@ -8,10 +9,8 @@ def get_iocs():
     iocs = IOC.query.all()
     return jsonify([ioc.serialize() for ioc in iocs])
 
-@ioc_bp.route('/seed', methods=['POST'])  # 👈 New route here
+@ioc_bp.route('/seed', methods=['POST'])
 def seed_iocs():
-    from models.ioc import IOC, db
-
     sample_data = [
         IOC(indicator="8.8.8.8", type="ip", source="Manual"),
         IOC(indicator="malicious.com", type="domain", source="ThreatFeedX"),
